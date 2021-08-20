@@ -38,7 +38,9 @@ ul { margin: 0; padding: 0; }
 a, a:hover { color: #252b2f; text-decoration: none; }
 .text-brown { color: #bb9356; }
 .btn-brown { background-color: #bb9356; color: #fff; }
+.btn-outline-brown { border: 1px solid #bb9356; color: #bb9356; }
 .btn-brown:hover { color: #fff; }
+.btn-outline-brown:hover { background-color: #bb9356; color: #fff; }
 section:not(#tour-course-drawings, #visual) img { transition: .5s; }
 section:not(#tour-course-drawings, #visual) img:hover { transform: scale(1.05); }
 
@@ -182,7 +184,7 @@ header>ul>li {
 
 #news { width: 550px; }
 .tab-menu { position: relative; }
-.tab-menu li { display: inline-block; }
+.tab-menu li { float: left; }
 .tab-menu label { height: 40px; cursor: pointer; }
 .tab-con {
     height: 250px;

@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../공통/fontawesome/css/font-awesome.css">
-    <link rel="stylesheet" href="../../공통/bootstrap-4.5.0-dist/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../공통/bootstrap-5.0.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>대전 브레드 투어</title>
+    <link rel="stylesheet" href="./css/sub.css">
+    <title>대전 빵집</title>
 </head>
 
 <body>
@@ -34,7 +35,15 @@
 
         <section id="sub-main-section">
             <div class="search">
-                
+                <div class="input-group">
+                    <select class="form-select" id="search-bread">
+                        <option value="name">빵집이름</option>
+                        <option value="menu">메뉴</option>
+                        <option value="local">지역</option>
+                    </select>
+                    <input type="text" class="form-control">
+                    <button class="btn btn-outline-brown">검색</button>
+                </div>
             </div>
         </section>
 
