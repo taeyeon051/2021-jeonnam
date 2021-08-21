@@ -1,0 +1,278 @@
+<!-- 비주얼 영역 -->
+<section id="visual">
+    <input type="radio" name="slide" id="slide-pause" hidden>
+    <input type="radio" name="slide" id="slide-play" hidden checked>
+    <div class="visual-images d-flex">
+        <img src="/공통/제공이미지/23.jpg" alt="visual-img1" title="visual-img1">
+        <img src="/공통/제공이미지/24.jpg" alt="visual-img2" title="visual-img2">
+        <img src="/공통/제공이미지/18.jpg" alt="visual-img3" title="visual-img3">
+    </div>
+    <div class="visual-texts d-flex">
+        <div class="visual-text">
+            <h3>맛있는 빵, 경이로운 빵, 생명의 빵을 만들어<br>이웃과 함께 사랑의 문화를 이루고자 하는 성심당</h3>
+        </div>
+        <div class="visual-text">
+            <h3>벨기에산 벨코라도 쇼콜라가 통째로 들어간 카카오순정과<br>프랑스 브르타뉴 버터로 구운 크로와상</h3>
+        </div>
+        <div class="visual-text">
+            <h3>직접 배양한 유산균과 생 반죽을 사용해<br>좋은 재료로 정직하게 빵을 만드는 곳.</h3>
+        </div>
+    </div>
+    <div class="pp-btns">
+        <label for="slide-pause" class="pause-btn">
+            <i class="fa fa-pause"></i>
+        </label>
+        <label for="slide-play" class="play-btn">
+            <i class="fa fa-play"></i>
+        </label>
+    </div>
+</section>
+
+<!-- 대전 브레드투어 소개 영역 -->
+<section id="tour-introduction" class="mx-auto d-flex justify-content-between align-items-center">
+    <div class="tour-text">
+        <h4 class="mb-3 text-brown">대전 브레드 투어</h4>
+        <p>빵을 좋아하는 사람들 사이에서는 빵집을 찾아 여행하는</p>
+        <p><span>‘빵투어’</span>와 <span>‘빵지순례’</span>가 하나의 트렌드로 자리 잡았다.</p>
+        <p>달콤하기만 한 빵은 옛날 말!</p>
+        <p>건강까지 잡은 속 편한 빵부터 다채로운 재료의 조합이 돋보이는 빵들까지!</p>
+        <p>개성 가득한 빵집들은 맛집을 탐방하듯 골라 다니는 재미가 있다.</p>
+        <p>대전 빵집 총정리! <span>'2021 대전브레드투어'</span>를 소개한다!</p>
+    </div>
+    <div class="tour-img">
+        <img src="/공통/제공이미지/8.jpg" alt="img" title="img">
+    </div>
+</section>
+
+<!-- 이벤트 소개, 새소식 영역 -->
+<section id="event-news" class="py-5 w-100 d-flex">
+    <!-- 이벤트 소개 영역 -->
+    <div id="event-introduction">
+        <h4 class="text-center mb-5">이벤트 소개</h4>
+        <div class="mx-auto w-75 d-flex justify-content-center align-items-center">
+            <img src="/A 모듈/이벤트소개이미지/event_2.jpg" alt="img" title="img">
+            <img src="/A 모듈/이벤트소개이미지/event_1.jpg" alt="img" title="img">
+        </div>
+    </div>
+
+    <!-- 새소식 영역 -->
+    <div id="news">
+        <h4 class="text-center mb-4">새소식</h4>
+        <div class="news-box">
+            <ul class="tab-menu">
+                <li id="tab1" class="w-50 text-center">
+                    <input type="radio" name="tab-menu" id="tab-menu1" checked hidden>
+                    <label for="tab-menu1" class="w-100 mb-0 d-block">공지사항</label>
+                    <div class="tab-con w-100 text-left position-absolute">
+                        <div class="news-item">
+                            <span title='대전빵집상인연합회 매니저 모집 공고(~10.11까지)'>대전빵집상인연합회 매니저 모집 공고(~10.11까지)</span>
+                            <span>2021-09-15</span>
+                        </div>
+                        <div class="news-item">
+                            <span title='2021 대전광역시 지원사업 안내'>2021 대전광역시 지원사업 안내</span>
+                            <span>2021-07-02</span>
+                        </div>
+                        <div class="news-item">
+                            <span title='온누리모바일상품권 URL 가맹방법 '>온누리모바일상품권 URL 가맹방법 </span>
+                            <span>2021-06-12</span>
+                        </div>
+                        <div class="news-item">
+                            <span title='제1대 대전빵집상인연합회 회장 선거'>제1대 대전빵집상인연합회 회장 선거</span>
+                            <span>2021-05-01</span>
+                        </div>
+                        <div class="news-item">
+                            <span title='대전 사회적 거리두기 2단계에 따른 방역지침 안내(04.08 ~ 04.28)'>대전 사회적 거리두기 2단계에 따른 방역지침 안내(04.08 ~ 04.28)</span>
+                            <span>2021-04-08</span>
+                        </div>
+                    </div>
+                </li>
+                <li id="tab2" class="w-50 text-center">
+                    <input type="radio" name="tab-menu" id="tab-menu2" hidden>
+                    <label for="tab-menu2" class="w-100 mb-0 d-block">소통과 참여</label>
+                    <div class="tab-con w-100 text-left position-absolute">
+                        <div class="news-item">
+                            <span title='[대전빵집상인연합회] 제1회 대전 빵집 상인의 날 행사'>[대전빵집상인연합회] 제1회 대전 빵집 상인의 날 행사</span>
+                            <span>2021-09-26</span>
+                        </div>
+                        <div class="news-item">
+                            <span title='[대전경찰청] 대전 보이스피싱 피해 예방 릴레이 캠페인'>[대전경찰청] 대전 보이스피싱 피해 예방 릴레이 캠페인</span>
+                            <span>2021-09-11</span>
+                        </div>
+                        <div class="news-item">
+                            <span title='[대전빵집상인연합회] "빵집정보통" 이벤트 안내'>[대전빵집상인연합회] "빵집정보통" 이벤트 안내</span>
+                            <span>2021-08-02</span>
+                        </div>
+                        <div class="news-item">
+                            <span title='[대전광역시] 코로나 피해 소상공인 전기요금 감면 안내'>[대전광역시] 코로나 피해 소상공인 전기요금 감면 안내</span>
+                            <span>2021-07-13</span>
+                        </div>
+                        <div class="news-item">
+                            <span title='[대전광역시] "코로나19" 극복 대전 소상상인 지원 안내'>[대전광역시] "코로나19" 극복 대전 소상상인 지원 안내</span>
+                            <span>2021-06-01</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 투어 코스 추천 영역 -->
+<section id="tour-course-drawings" class="mt-3">
+    <h3 class="text-brown pb-2">대전광역시 지도</h3>
+    <div class="tour-course-title-border mb-5"></div>
+    <div id="tour-course" class="d-flex justify-content-between position-relative">
+        <input type="radio" name="bakery" id="bakery-1" checked hidden>
+        <input type="radio" name="bakery" id="bakery-2" hidden>
+        <input type="radio" name="bakery" id="bakery-3" hidden>
+        <input type="radio" name="bakery" id="bakery-4" hidden>
+        <input type="radio" name="bakery" id="bakery-5" hidden>
+        <div class="map-img">
+            <img src="/A 모듈/투어 코스 추천/투어코스지도.png" alt="map" title="map">
+            <label class="bakery-1" for="bakery-1">1</label>
+            <label class="bakery-2" for="bakery-2">2</label>
+            <label class="bakery-3" for="bakery-3">3</label>
+            <label class="bakery-4" for="bakery-4">4</label>
+            <label class="bakery-5" for="bakery-5">5</label>
+        </div>
+        <div class="bakery">
+            <div class="bakery-information">
+                <input type="radio" class="radio-circle" name="bakery-graph-1" id="circle-1" hidden>
+                <input type="radio" class="radio-bar" name="bakery-graph-1" id="bar-1" hidden>
+                <input type="radio" class="radio-broken-line" name="bakery-graph-1" id="broken-line-1" hidden checked>
+                <div class="bakery-title d-flex align-items-end">
+                    <h3>성심당</h3>
+                    <button class="btn btn-brown">지도보기</button>
+                </div>
+                <div class="bakery-title-border"></div>
+                <p class="bakery-address mb-4">대전광역시 중구 은행동 대종로480번길 15</p>
+                <div class="bakery-menu">
+                    <label for="circle-1">방문 계기</label>
+                    <label for="bar-1">만족도</label>
+                    <label for="broken-line-1">연도별 방문자</label>
+                </div>
+                <div class="bakery-graph"></div>
+                <div class="bakery-main-menu">
+                    빵집 대표 메뉴 : <span>튀김소보로/부추빵</span>
+                </div>
+                <div class="bakery-exp">
+                    '성심당은 大田의 文化입니다.' 1956년 대전역 앞 작은 찐빵집에서 시작된 성심당은, 대전 시민의 자부심과 사랑으로 대한민국 제과업계를 대표하는 향토기업으로
+                    성장하였습니다. 우리는 가톨릭 정신을 바탕으로 지역 사회에 봉사하는 가치있는 기업이 되고자 합니다. 또한 '맛있는 빵, 경이로운 빵, 생명의 빵'을 만들어 이웃과
+                    함께 '사랑의 문화'를 이루어 가고자 합니다.
+                </div>
+            </div>
+            <div class="bakery-information">
+                <input type="radio" class="radio-circle" name="bakery-graph-2" id="circle-2" hidden>
+                <input type="radio" class="radio-bar" name="bakery-graph-2" id="bar-2" hidden>
+                <input type="radio" class="radio-broken-line" name="bakery-graph-2" id="broken-line-2" hidden checked>
+                <div class="bakery-title d-flex align-items-end">
+                    <h3>콜마르브레드</h3>
+                    <button class="btn btn-brown">지도보기</button>
+                </div>
+                <div class="bakery-title-border"></div>
+                <p class="bakery-address mb-4">대전광역시 유성구 어은로 52 엘리트독서실</p>
+                <div class="bakery-menu">
+                    <label for="circle-2">방문 계기</label>
+                    <label for="bar-2">만족도</label>
+                    <label for="broken-line-2">연도별 방문자</label>
+                </div>
+                <div class="bakery-graph"></div>
+                <div class="bakery-main-menu">
+                    빵집 대표 메뉴 : <span>끼리바나나빵/아몬드 크로아상/호두 트위스트/쑥떡빵/뉴욕치즈타르트</span>
+                </div>
+                <div class="bakery-exp">
+                    어은동에 위치한 '콜마르브레드'에서는 다른 곳에서 보지 못한 빵들이 많이 보일 정도로 다양한 빵들이 있다. 그 중 제4회 끼리크림치즈 경연대회 페스츄리부문에서 대상을
+                    수상한 '바나나빵' 이 곳의 시그니처라고 할 수 있다. 베이커리류 외에 간단한 음료 메뉴와 상하 유기농 아이스크림도 판매하고 있으며 아담한 규모의 매장이기 때문에
+                    매장 내 앉아서 먹을 곳은 없고 테이크아웃만 가능하다. '콜마르브레드'는 죽동에도 있으며 매장 규모가 좀 더 큰 편이니 참고하면 좋다.
+                </div>
+            </div>
+            <div class="bakery-information">
+                <input type="radio" class="radio-circle" name="bakery-graph-3" id="circle-3" hidden>
+                <input type="radio" class="radio-bar" name="bakery-graph-3" id="bar-3" hidden>
+                <input type="radio" class="radio-broken-line" name="bakery-graph-3" id="broken-line-3" hidden checked>
+                <div class="bakery-title d-flex align-items-end">
+                    <h3>아빠의꿈</h3>
+                    <button class="btn btn-brown">지도보기</button>
+                </div>
+                <div class="bakery-title-border"></div>
+                <p class="bakery-address mb-4">대전광역시 유성구 신성남로 57</p>
+                <div class="bakery-menu">
+                    <label for="circle-3">방문 계기</label>
+                    <label for="bar-3">만족도</label>
+                    <label for="broken-line-3">연도별 방문자</label>
+                </div>
+                <div class="bakery-graph"></div>
+                <div class="bakery-main-menu">
+                    빵집 대표 메뉴 : <span>검은콩앙금빵/무화과바게트</span>
+                </div>
+                <div class="bakery-exp">
+                    유화제, 색소, 제빵계량제 등을 전혀 사용하지 않고 콩유산균과 천연발효종을 사용하여 빵을 만드는 베이커리 집입니다. 자연 원료로만 만드는 이 집의 빵은 건강에도
+                    좋지만 맛도 좋습니다. 작고 아담하지만 친숙한 이미지와 진정한 맛을 제공해주는 베이커리입니다.
+                </div>
+            </div>
+            <div class="bakery-information">
+                <input type="radio" class="radio-circle" name="bakery-graph-4" id="circle-4" hidden>
+                <input type="radio" class="radio-bar" name="bakery-graph-4" id="bar-4" hidden>
+                <input type="radio" class="radio-broken-line" name="bakery-graph-4" id="broken-line-4" hidden checked>
+                <div class="bakery-title d-flex align-items-end">
+                    <h3>파이한모금</h3>
+                    <button class="btn btn-brown">지도보기</button>
+                </div>
+                <div class="bakery-title-border"></div>
+                <p class="bakery-address mb-4">대전광역시 동구 자양동 197-8</p>
+                <div class="bakery-menu">
+                    <label for="circle-4">방문 계기</label>
+                    <label for="bar-4">만족도</label>
+                    <label for="broken-line-4">연도별 방문자</label>
+                </div>
+                <div class="bakery-graph"></div>
+                <div class="bakery-main-menu">
+                    빵집 대표 메뉴 : <span>마늘바게트/마카롱/파이</span>
+                </div>
+                <div class="bakery-exp">
+                    아기자기하고 조그마한 카페지만 여유를 주는 달콤한 곳, 파이한모금입니다. 파이류와 페스츄리 종류의 빵들이 맛있기로 유명한 곳입니다. 빵과 함께 드실 수 있는 커피와
+                    음료도 준비되어 있습니다. 빵이 빨리 소진되니, 인스타그램을 참고해서 방문하는 것을 추천드립니다. 당일 오전이나 전날에 빵을 미리 예약해 둘 수 있습니다.
+                </div>
+            </div>
+            <div class="bakery-information">
+                <input type="radio" class="radio-circle" name="bakery-graph-5" id="circle-5" hidden>
+                <input type="radio" class="radio-bar" name="bakery-graph-5" id="bar-5" hidden>
+                <input type="radio" class="radio-broken-line" name="bakery-graph-5" id="broken-line-5" hidden checked>
+                <div class="bakery-title d-flex align-items-end">
+                    <h3>르뺑99-1</h3>
+                    <button class="btn btn-brown">지도보기</button>
+                </div>
+                <div class="bakery-title-border"></div>
+                <p class="bakery-address mb-4">대전광역시 유성구 온천북로33번길 22-3 101호</p>
+                <div class="bakery-menu">
+                    <label for="circle-5">방문 계기</label>
+                    <label for="bar-5">만족도</label>
+                    <label for="broken-line-5">연도별 방문자</label>
+                </div>
+                <div class="bakery-graph"></div>
+                <div class="bakery-main-menu">
+                    빵집 대표 메뉴 : <span>마늘바게트/마카롱/파이</span>
+                </div>
+                <div class="bakery-exp">
+                    다양한 종류의 빵을 직접 만드는 베이커리입니다. 건강한 재료로 만드는 맛있는 빵들이 인기가 좋습니다. 아주 두툼한 크기의 파이가 대표 메뉴이며, 독특한 맛의 말차
+                    크로와상도 인기입니다. 케이크류도 맛이 좋아 많은 사람들이 찾습니다. 빵과 함께 마실수 있는 다양한 음료와 빙수도 준비되어 있습니다.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 후원사 영역 -->
+<section id="sponsor">
+    <h3 class="text-center mb-3">SPONSORS</h3>
+    <div class="d-flex justify-content-center align-items-center">
+        <img src="/A 모듈/후원사 이미지/1.jpg" alt="sponsor" title="sponsor">
+        <img src="/A 모듈/후원사 이미지/2.jpg" alt="sponsor" title="sponsor">
+        <img src="/A 모듈/후원사 이미지/3.jpg" alt="sponsor" title="sponsor">
+        <img src="/A 모듈/후원사 이미지/4.jpg" alt="sponsor" title="sponsor">
+        <img src="/A 모듈/후원사 이미지/5.jpg" alt="sponsor" title="sponsor">
+        <img src="/A 모듈/후원사 이미지/6.jpg" alt="sponsor" title="sponsor">
+        <img src="/A 모듈/후원사 이미지/7.jpg" alt="sponsor" title="sponsor">
+        <img src="/A 모듈/후원사 이미지/8.jpg" alt="sponsor" title="sponsor">
+    </div>
+</section>
