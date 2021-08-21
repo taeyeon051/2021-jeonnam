@@ -11,3 +11,23 @@
 #search-bread {
     max-width: 160px;
 }
+
+.store-list {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bread-store-list {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+
+.card { width: 240px; }
+
+.card>img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
