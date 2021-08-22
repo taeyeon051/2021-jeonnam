@@ -18,6 +18,7 @@
 }
 
 .bread-store-list {
+    min-width: 505px;
     display: grid;
     gap: 25px;
     grid-template-columns: repeat(2, 1fr);

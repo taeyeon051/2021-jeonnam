@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/공통/bootstrap-5.0.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/sub.css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
     <title>대전 빵집</title>
 </head>
 
