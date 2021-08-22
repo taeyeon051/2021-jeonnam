@@ -16,7 +16,7 @@
             <div class="bread-store-list mb-5">
                 <?php for ($i = 0; $i < count($list); $i++) : ?>
                     <?php if ($list[$i]->ranking <= 5 && $i < 5) : ?>
-                        <div class="card">
+                        <div class="card" data-idx="<?= $list[$i]->id ?>">
                             <img src="/C 모듈/<?= $list[$i]->image ?>" class="card-img-top" alt="img" title="img">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $list[$i]->name ?></h5>
@@ -35,7 +35,7 @@
             <div class="bread-store-list">
                 <?php for ($i = 0; $i < count($list); $i++) : ?>
                     <?php if ($list[$i]->ranking > 4 && $i > 4) : ?>
-                        <div class="card">
+                        <div class="card" data-idx="<?= $list[$i]->id ?>">
                             <img src="/C 모듈/<?= $list[$i]->image ?>" class="card-img-top" alt="img" title="img">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $list[$i]->name ?></h5>
@@ -58,7 +58,6 @@
 
         const list = JSON.parse('<?= json_encode($list, JSON_UNESCAPED_UNICODE) ?>');
         const searchBtn = document.querySelector("#search-btn");
-        log(list);
         $(searchBtn).on("click", () => search());
         window.addEventListener("keydown", e => {
             if (e.keyCode == 13) search();
@@ -70,22 +69,51 @@
             const cards = document.querySelectorAll(".card");
 
             if (keyword.trim() === "") {
-                cards.forEach(card => { card.classList.replace("d-none", "d-flex"); });
+                cards.forEach(card => {
+                    card.classList.replace("d-none", "d-flex");
+                });
             }
 
             if (type.trim() !== "" && keyword.trim() !== "") {
-                cards.forEach(card => {
-                    card.classList.add("d-none");
-                    card.classList.replace("d-flex", "d-none");
-                    if (type == "name") {
-                        const name = card.querySelector(".card-title").innerText;
-                        if (name.indexOf(keyword.trim()) != -1) card.classList.replace("d-none", "d-flex");
-                    } else if (type == "local") {
-                        log(card.querySelector(".local"));
-                        const local = card.querySelector(".local").innerText;
-                        if (local.indexOf(keyword.trim()) != -1) card.classList.replace("d-none", "d-flex");
-                    }
-                });
+                if (type == "menu") {
+                    $.ajax({
+                        url: '/menu/check',
+                        type: 'POST',
+                        data: {
+                            keyword
+                        },
+                        success: async e => {
+                            if (e == "실패") {
+                                cards.forEach(card => {
+                                    card.classList.add("d-none");
+                                    card.classList.replace("d-flex", "d-none");
+                                });
+                            } else {
+                                let arr = await JSON.parse(e);
+                                cards.forEach(card => {
+                                    card.classList.add("d-none");
+                                    card.classList.replace("d-flex", "d-none");
+                                    if (arr.find(f => f.store_id == card.dataset.idx)) {
+                                        card.classList.replace("d-none", "d-flex");   
+                                    }
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    cards.forEach(card => {
+                        card.classList.add("d-none");
+                        card.classList.replace("d-flex", "d-none");
+                        if (type == "name") {
+                            const name = card.querySelector(".card-title").innerText;
+                            if (name.indexOf(keyword.trim()) != -1) card.classList.replace("d-none", "d-flex");
+                        } else if (type == "local") {
+                            log(card.querySelector(".local"));
+                            const local = card.querySelector(".local").innerText;
+                            if (local.indexOf(keyword.trim()) != -1) card.classList.replace("d-none", "d-flex");
+                        }
+                    });
+                }
             }
         }
     }

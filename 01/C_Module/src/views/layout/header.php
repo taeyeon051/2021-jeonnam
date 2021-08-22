@@ -21,9 +21,9 @@
                 <img src="/logo.png" alt="logo" title="logo" width="120">
             </div>
             <ul id="menu">
-                <li><a href="/daejeon_bakery">대전 빵집</a></li>
+                <li><a href="/daejeon/bakery">대전 빵집</a></li>
                 <li><a href="/stamp">스탬프</a></li>
-                <li><a href="/sale_event">할인 이벤트</a></li>
+                <li><a href="/sale/event">할인 이벤트</a></li>
                 <li><a href="/mypage">마이페이지</a></li>
             </ul>
             <ul>

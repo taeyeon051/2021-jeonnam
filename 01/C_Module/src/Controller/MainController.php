@@ -30,8 +30,21 @@ class MainController extends MasterController
             ORDER BY sell DESC;";
 
         $storeList = DB::fetchAll($storeSql);
-        $breadList = DB::fetchAll("SELECT * FROM breads");
 
-        $this->render('daejeon_bakery', ['list' => $storeList, 'breadList' => $breadList, 'sql' => $storeSql]);
+        $this->render('daejeon_bakery', ['list' => $storeList]);
+    }
+
+    public function menuCheck()
+    {
+        $keyword = $_POST['keyword'];
+        $sql = "SELECT * FROM breads WHERE name LIKE ?";
+        $result = DB::fetchAll($sql, ['%' . $keyword . '%']);
+        if ($result) echo json_encode($result, JSON_UNESCAPED_UNICODE);
+        else echo "실패";
+    }
+
+    public function saleEvent()
+    {
+        $this->render('sale_event');
     }
 }
