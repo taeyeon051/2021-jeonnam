@@ -264,7 +264,8 @@ header>ul>li {
     animation: bakery-border 1.5s linear infinite;
 }
 
-.bakery-title>.btn {
+.bakery-title>.btn,
+.issue>.btn {
     width: 75px;
     height: 30px;
     font-size: 14px;

@@ -35,6 +35,49 @@
 }
 
 
+/* 스탬프 페이지 */
+
+#stamp-page>.left-main {
+    width: 500px;
+    padding: 80px;
+    padding-right: 0;
+}
+
+.left-main>div {
+    margin: 60px 0;
+}
+
+.issue>button {
+    margin: 5px 35px;
+}
+
+
+/* 팝업 */
+
+.popup {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    padding-top: 90px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+}
+
+.inner {
+    width: 500px;
+    height: 200px;
+    position: relative;
+    background-color: #fff;
+}
+
+.popup-header { height: 35px; }
+.popup-header>.close-btn { font-size: 18px; }
+.popup-btns>.btn { margin-left: 5px; }
+
+
 /* 로그인 페이지 */
 
 #login-page {
