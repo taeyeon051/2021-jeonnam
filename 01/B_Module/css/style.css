@@ -41,8 +41,8 @@ a, a:hover { color: #252b2f; text-decoration: none; }
 .btn-outline-brown { border: 1px solid #bb9356; color: #bb9356; }
 .btn-brown:hover { color: #fff; }
 .btn-outline-brown:hover { background-color: #bb9356; color: #fff; }
-section:not(#tour-course-drawings, #visual, #sub-main-section) img { transition: .5s; }
-section:not(#tour-course-drawings, #visual, #sub-main-section) img:hover { transform: scale(1.05); }
+#tour-introduction img, #event-news img, #sponsor img { transition: .5s; }
+#tour-introduction img:hover, #event-news img:hover, #sponsor img:hover { transform: scale(1.05); }
 
 
 /* 헤더 영역 */
@@ -363,6 +363,7 @@ footer a:hover { color: #252b2f; }
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     border: 1px solid #252b2f;
 }
 
