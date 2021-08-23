@@ -37,7 +37,7 @@ class MainController extends MasterController
     public function menuCheck()
     {
         $keyword = $_POST['keyword'];
-        $sql = "SELECT * FROM breads WHERE name LIKE ?";
+        $sql = "SELECT * FROM breads WHERE BINARY(name) LIKE ?";
         $result = DB::fetchAll($sql, ['%' . $keyword . '%']);
         if ($result) echo json_encode($result, JSON_UNESCAPED_UNICODE);
         else echo "실패";
@@ -45,6 +45,20 @@ class MainController extends MasterController
 
     public function saleEvent()
     {
-        $this->render('sale_event');
+        $keyword = '%%';
+
+        if (isset($_GET['keyword'])) $keyword = '%' . $_GET['keyword'] . '%';
+
+        $sql = 
+            "SELECT b.*, s.name storeName
+            FROM breads b
+            JOIN stores s
+            ON b.store_id = s.id
+            WHERE b.sale > 0 and BINARY(b.name) LIKE ?
+            ORDER BY b.sale DESC";
+
+        $result = DB::fetchAll($sql, [$keyword]);
+
+        $this->render('sale_event', ['list' => $result]);
     }
 }

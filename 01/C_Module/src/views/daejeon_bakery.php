@@ -1,7 +1,7 @@
 <section id="sub-main-section" class="mb-5">
     <div class="search">
         <div class="input-group">
-            <select class="form-select" id="type" id="search-bread">
+            <select class="form-select" id="type">
                 <option value="name">빵집이름</option>
                 <option value="menu">메뉴</option>
                 <option value="local">지역</option>
