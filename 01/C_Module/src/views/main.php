@@ -3,9 +3,9 @@
     <input type="radio" name="slide" id="slide-pause" hidden>
     <input type="radio" name="slide" id="slide-play" hidden checked>
     <div class="visual-images d-flex">
-        <img src="/공통/제공이미지/23.jpg" alt="visual-img1" title="visual-img1">
-        <img src="/공통/제공이미지/24.jpg" alt="visual-img2" title="visual-img2">
-        <img src="/공통/제공이미지/18.jpg" alt="visual-img3" title="visual-img3">
+        <img src="../../공통/제공이미지/23.jpg" alt="visual-img1" title="visual-img1">
+        <img src="../../공통/제공이미지/24.jpg" alt="visual-img2" title="visual-img2">
+        <img src="../../공통/제공이미지/18.jpg" alt="visual-img3" title="visual-img3">
     </div>
     <div class="visual-texts d-flex">
         <div class="visual-text">
@@ -40,7 +40,7 @@
         <p>대전 빵집 총정리! <span>'2021 대전브레드투어'</span>를 소개한다!</p>
     </div>
     <div class="tour-img">
-        <img src="/공통/제공이미지/8.jpg" alt="img" title="img">
+        <img src="../../공통/제공이미지/8.jpg" alt="img" title="img">
     </div>
 </section>
 
@@ -50,8 +50,8 @@
     <div id="event-introduction">
         <h4 class="text-center mb-5">이벤트 소개</h4>
         <div class="mx-auto w-75 d-flex justify-content-center align-items-center">
-            <img src="/A 모듈/이벤트소개이미지/event_2.jpg" alt="img" title="img">
-            <img src="/A 모듈/이벤트소개이미지/event_1.jpg" alt="img" title="img">
+            <img src="../../A 모듈/이벤트소개이미지/event_2.jpg" alt="img" title="img">
+            <img src="../../A 모듈/이벤트소개이미지/event_1.jpg" alt="img" title="img">
         </div>
     </div>
 
@@ -81,7 +81,8 @@
                             <span>2021-05-01</span>
                         </div>
                         <div class="news-item">
-                            <span title='대전 사회적 거리두기 2단계에 따른 방역지침 안내(04.08 ~ 04.28)'>대전 사회적 거리두기 2단계에 따른 방역지침 안내(04.08 ~ 04.28)</span>
+                            <span title='대전 사회적 거리두기 2단계에 따른 방역지침 안내(04.08 ~ 04.28)'>대전 사회적 거리두기 2단계에 따른 방역지침
+                                안내(04.08 ~ 04.28)</span>
                             <span>2021-04-08</span>
                         </div>
                     </div>
@@ -107,7 +108,8 @@
                             <span>2021-07-13</span>
                         </div>
                         <div class="news-item">
-                            <span title='[대전광역시] "코로나19" 극복 대전 소상상인 지원 안내'>[대전광역시] "코로나19" 극복 대전 소상상인 지원 안내</span>
+                            <span title='[대전광역시] "코로나19" 극복 대전 소상상인 지원 안내'>[대전광역시] "코로나19" 극복 대전 소상상인 지원
+                                안내</span>
                             <span>2021-06-01</span>
                         </div>
                     </div>
@@ -128,18 +130,18 @@
         <input type="radio" name="bakery" id="bakery-4" hidden>
         <input type="radio" name="bakery" id="bakery-5" hidden>
         <div class="map-img">
-            <img src="/A 모듈/투어 코스 추천/투어코스지도.png" alt="map" title="map">
+            <img src="../../A 모듈/투어 코스 추천/투어코스지도.png" alt="map" title="map">
             <label class="bakery-1" for="bakery-1">1</label>
             <label class="bakery-2" for="bakery-2">2</label>
             <label class="bakery-3" for="bakery-3">3</label>
             <label class="bakery-4" for="bakery-4">4</label>
             <label class="bakery-5" for="bakery-5">5</label>
         </div>
+        <input type="radio" class="radio-circle" name="bakery-graph" id="circle" hidden>
+        <input type="radio" class="radio-bar" name="bakery-graph" id="bar" hidden>
+        <input type="radio" class="radio-line" name="bakery-graph" id="line" hidden checked>
         <div class="bakery">
             <div class="bakery-information">
-                <input type="radio" class="radio-circle" name="bakery-graph-1" id="circle-1" hidden>
-                <input type="radio" class="radio-bar" name="bakery-graph-1" id="bar-1" hidden>
-                <input type="radio" class="radio-broken-line" name="bakery-graph-1" id="broken-line-1" hidden checked>
                 <div class="bakery-title d-flex align-items-end">
                     <h3>성심당</h3>
                     <button class="btn btn-brown">지도보기</button>
@@ -147,11 +149,41 @@
                 <div class="bakery-title-border"></div>
                 <p class="bakery-address mb-4">대전광역시 중구 은행동 대종로480번길 15</p>
                 <div class="bakery-menu">
-                    <label for="circle-1">방문 계기</label>
-                    <label for="bar-1">만족도</label>
-                    <label for="broken-line-1">연도별 방문자</label>
+                    <label for="circle">방문 계기</label>
+                    <label for="bar">만족도</label>
+                    <label for="line">연도별 방문자</label>
                 </div>
-                <div class="bakery-graph"></div>
+                <div class="bakery-graph">
+                    <div class="pie-graph">
+                        <svg width="320" height="240">
+                            <circle />
+                            <circle />
+                            <circle />
+                        </svg>
+                    </div>
+                    <div class="bar-graph">
+                        <svg width="320" height="240">
+                            <rect x="0" y="40" fill="#e7cf9f"></rect>
+                            <rect x="0" y="100" fill="#b7702c"></rect>
+                            <rect x="0" y="160" fill="#8b6d4c"></rect>
+                        </svg>
+                    </div>
+                    <div class="line-graph">
+                        <svg width="320" height="240">
+                            <circle r="5" cx="10" cy="230"></circle>
+                            <circle r="5" cx="110" cy="230"></circle>
+                            <circle r="5" cx="210" cy="230"></circle>
+                            <circle r="5" cx="310" cy="230"></circle>
+
+                            <path d="M10 230 110 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M110 230 210 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M210 230 310 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
                 <div class="bakery-main-menu">
                     빵집 대표 메뉴 : <span>튀김소보로/부추빵</span>
                 </div>
@@ -162,9 +194,6 @@
                 </div>
             </div>
             <div class="bakery-information">
-                <input type="radio" class="radio-circle" name="bakery-graph-2" id="circle-2" hidden>
-                <input type="radio" class="radio-bar" name="bakery-graph-2" id="bar-2" hidden>
-                <input type="radio" class="radio-broken-line" name="bakery-graph-2" id="broken-line-2" hidden checked>
                 <div class="bakery-title d-flex align-items-end">
                     <h3>콜마르브레드</h3>
                     <button class="btn btn-brown">지도보기</button>
@@ -172,11 +201,41 @@
                 <div class="bakery-title-border"></div>
                 <p class="bakery-address mb-4">대전광역시 유성구 어은로 52 엘리트독서실</p>
                 <div class="bakery-menu">
-                    <label for="circle-2">방문 계기</label>
-                    <label for="bar-2">만족도</label>
-                    <label for="broken-line-2">연도별 방문자</label>
+                    <label for="circle">방문 계기</label>
+                    <label for="bar">만족도</label>
+                    <label for="line">연도별 방문자</label>
                 </div>
-                <div class="bakery-graph"></div>
+                <div class="bakery-graph">
+                    <div class="pie-graph">
+                        <svg width="320" height="240">
+                            <circle />
+                            <circle />
+                            <circle />
+                        </svg>
+                    </div>
+                    <div class="bar-graph">
+                        <svg width="320" height="240">
+                            <rect x="0" y="40" fill="#e7cf9f"></rect>
+                            <rect x="0" y="100" fill="#b7702c"></rect>
+                            <rect x="0" y="160" fill="#8b6d4c"></rect>
+                        </svg>
+                    </div>
+                    <div class="line-graph">
+                        <svg width="320" height="240">
+                            <circle r="5" cx="10" cy="230"></circle>
+                            <circle r="5" cx="110" cy="230"></circle>
+                            <circle r="5" cx="210" cy="230"></circle>
+                            <circle r="5" cx="310" cy="230"></circle>
+
+                            <path d="M10 230 110 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M110 230 210 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M210 230 310 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
                 <div class="bakery-main-menu">
                     빵집 대표 메뉴 : <span>끼리바나나빵/아몬드 크로아상/호두 트위스트/쑥떡빵/뉴욕치즈타르트</span>
                 </div>
@@ -187,9 +246,6 @@
                 </div>
             </div>
             <div class="bakery-information">
-                <input type="radio" class="radio-circle" name="bakery-graph-3" id="circle-3" hidden>
-                <input type="radio" class="radio-bar" name="bakery-graph-3" id="bar-3" hidden>
-                <input type="radio" class="radio-broken-line" name="bakery-graph-3" id="broken-line-3" hidden checked>
                 <div class="bakery-title d-flex align-items-end">
                     <h3>아빠의꿈</h3>
                     <button class="btn btn-brown">지도보기</button>
@@ -197,11 +253,41 @@
                 <div class="bakery-title-border"></div>
                 <p class="bakery-address mb-4">대전광역시 유성구 신성남로 57</p>
                 <div class="bakery-menu">
-                    <label for="circle-3">방문 계기</label>
-                    <label for="bar-3">만족도</label>
-                    <label for="broken-line-3">연도별 방문자</label>
+                    <label for="circle">방문 계기</label>
+                    <label for="bar">만족도</label>
+                    <label for="line">연도별 방문자</label>
                 </div>
-                <div class="bakery-graph"></div>
+                <div class="bakery-graph">
+                    <div class="pie-graph">
+                        <svg width="320" height="240">
+                            <circle />
+                            <circle />
+                            <circle />
+                        </svg>
+                    </div>
+                    <div class="bar-graph">
+                        <svg width="320" height="240">
+                            <rect x="0" y="40" fill="#e7cf9f"></rect>
+                            <rect x="0" y="100" fill="#b7702c"></rect>
+                            <rect x="0" y="160" fill="#8b6d4c"></rect>
+                        </svg>
+                    </div>
+                    <div class="line-graph">
+                        <svg width="320" height="240">
+                            <circle r="5" cx="10" cy="230"></circle>
+                            <circle r="5" cx="110" cy="230"></circle>
+                            <circle r="5" cx="210" cy="230"></circle>
+                            <circle r="5" cx="310" cy="230"></circle>
+
+                            <path d="M10 230 110 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M110 230 210 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M210 230 310 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
                 <div class="bakery-main-menu">
                     빵집 대표 메뉴 : <span>검은콩앙금빵/무화과바게트</span>
                 </div>
@@ -211,9 +297,6 @@
                 </div>
             </div>
             <div class="bakery-information">
-                <input type="radio" class="radio-circle" name="bakery-graph-4" id="circle-4" hidden>
-                <input type="radio" class="radio-bar" name="bakery-graph-4" id="bar-4" hidden>
-                <input type="radio" class="radio-broken-line" name="bakery-graph-4" id="broken-line-4" hidden checked>
                 <div class="bakery-title d-flex align-items-end">
                     <h3>파이한모금</h3>
                     <button class="btn btn-brown">지도보기</button>
@@ -221,11 +304,41 @@
                 <div class="bakery-title-border"></div>
                 <p class="bakery-address mb-4">대전광역시 동구 자양동 197-8</p>
                 <div class="bakery-menu">
-                    <label for="circle-4">방문 계기</label>
-                    <label for="bar-4">만족도</label>
-                    <label for="broken-line-4">연도별 방문자</label>
+                    <label for="circle">방문 계기</label>
+                    <label for="bar">만족도</label>
+                    <label for="line">연도별 방문자</label>
                 </div>
-                <div class="bakery-graph"></div>
+                <div class="bakery-graph">
+                    <div class="pie-graph">
+                        <svg width="320" height="240">
+                            <circle />
+                            <circle />
+                            <circle />
+                        </svg>
+                    </div>
+                    <div class="bar-graph">
+                        <svg width="320" height="240">
+                            <rect x="0" y="40" fill="#e7cf9f"></rect>
+                            <rect x="0" y="100" fill="#b7702c"></rect>
+                            <rect x="0" y="160" fill="#8b6d4c"></rect>
+                        </svg>
+                    </div>
+                    <div class="line-graph">
+                        <svg width="320" height="240">
+                            <circle r="5" cx="10" cy="230"></circle>
+                            <circle r="5" cx="110" cy="230"></circle>
+                            <circle r="5" cx="210" cy="230"></circle>
+                            <circle r="5" cx="310" cy="230"></circle>
+
+                            <path d="M10 230 110 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M110 230 210 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M210 230 310 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
                 <div class="bakery-main-menu">
                     빵집 대표 메뉴 : <span>마늘바게트/마카롱/파이</span>
                 </div>
@@ -235,9 +348,6 @@
                 </div>
             </div>
             <div class="bakery-information">
-                <input type="radio" class="radio-circle" name="bakery-graph-5" id="circle-5" hidden>
-                <input type="radio" class="radio-bar" name="bakery-graph-5" id="bar-5" hidden>
-                <input type="radio" class="radio-broken-line" name="bakery-graph-5" id="broken-line-5" hidden checked>
                 <div class="bakery-title d-flex align-items-end">
                     <h3>르뺑99-1</h3>
                     <button class="btn btn-brown">지도보기</button>
@@ -245,11 +355,41 @@
                 <div class="bakery-title-border"></div>
                 <p class="bakery-address mb-4">대전광역시 유성구 온천북로33번길 22-3 101호</p>
                 <div class="bakery-menu">
-                    <label for="circle-5">방문 계기</label>
-                    <label for="bar-5">만족도</label>
-                    <label for="broken-line-5">연도별 방문자</label>
+                    <label for="circle">방문 계기</label>
+                    <label for="bar">만족도</label>
+                    <label for="line">연도별 방문자</label>
                 </div>
-                <div class="bakery-graph"></div>
+                <div class="bakery-graph">
+                    <div class="pie-graph">
+                        <svg width="320" height="240">
+                            <circle />
+                            <circle />
+                            <circle />
+                        </svg>
+                    </div>
+                    <div class="bar-graph">
+                        <svg width="320" height="240">
+                            <rect x="0" y="40" fill="#e7cf9f"></rect>
+                            <rect x="0" y="100" fill="#b7702c"></rect>
+                            <rect x="0" y="160" fill="#8b6d4c"></rect>
+                        </svg>
+                    </div>
+                    <div class="line-graph">
+                        <svg width="320" height="240">
+                            <circle r="5" cx="10" cy="230"></circle>
+                            <circle r="5" cx="110" cy="230"></circle>
+                            <circle r="5" cx="210" cy="230"></circle>
+                            <circle r="5" cx="310" cy="230"></circle>
+
+                            <path d="M10 230 110 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M110 230 210 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                            <path d="M210 230 310 230" stroke="#000" stroke-width="2" stroke-linecap="round">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
                 <div class="bakery-main-menu">
                     빵집 대표 메뉴 : <span>마늘바게트/마카롱/파이</span>
                 </div>
@@ -266,13 +406,13 @@
 <section id="sponsor">
     <h3 class="text-center mb-3">SPONSORS</h3>
     <div class="d-flex justify-content-center align-items-center">
-        <img src="/A 모듈/후원사 이미지/1.jpg" alt="sponsor" title="sponsor">
-        <img src="/A 모듈/후원사 이미지/2.jpg" alt="sponsor" title="sponsor">
-        <img src="/A 모듈/후원사 이미지/3.jpg" alt="sponsor" title="sponsor">
-        <img src="/A 모듈/후원사 이미지/4.jpg" alt="sponsor" title="sponsor">
-        <img src="/A 모듈/후원사 이미지/5.jpg" alt="sponsor" title="sponsor">
-        <img src="/A 모듈/후원사 이미지/6.jpg" alt="sponsor" title="sponsor">
-        <img src="/A 모듈/후원사 이미지/7.jpg" alt="sponsor" title="sponsor">
-        <img src="/A 모듈/후원사 이미지/8.jpg" alt="sponsor" title="sponsor">
+        <img src="../../A 모듈/후원사 이미지/1.jpg" alt="sponsor" title="sponsor">
+        <img src="../../A 모듈/후원사 이미지/2.jpg" alt="sponsor" title="sponsor">
+        <img src="../../A 모듈/후원사 이미지/3.jpg" alt="sponsor" title="sponsor">
+        <img src="../../A 모듈/후원사 이미지/4.jpg" alt="sponsor" title="sponsor">
+        <img src="../../A 모듈/후원사 이미지/5.jpg" alt="sponsor" title="sponsor">
+        <img src="../../A 모듈/후원사 이미지/6.jpg" alt="sponsor" title="sponsor">
+        <img src="../../A 모듈/후원사 이미지/7.jpg" alt="sponsor" title="sponsor">
+        <img src="../../A 모듈/후원사 이미지/8.jpg" alt="sponsor" title="sponsor">
     </div>
 </section>

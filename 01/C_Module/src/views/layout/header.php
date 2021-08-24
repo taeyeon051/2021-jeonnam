@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/공통/bootstrap-5.0.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/sub.css">
+    <link rel="stylesheet" href="/css/myPage.css">
     <script src="/js/jquery-3.6.0.min.js"></script>
     <title>대전 빵집</title>
 </head>
@@ -24,7 +25,7 @@
                 <li><a href="/daejeon/bakery">대전 빵집</a></li>
                 <li><a href="/stamp">스탬프</a></li>
                 <li><a href="/sale/event">할인 이벤트</a></li>
-                <li><a href="/mypage">마이페이지</a></li>
+                <li><a href="/user/mypage">마이페이지</a></li>
             </ul>
             <ul>
                 <?php if (__SESSION) : ?>

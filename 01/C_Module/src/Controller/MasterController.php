@@ -11,6 +11,6 @@ class MasterController
         require_once(__VIEWS . "/layout/header.php");
         require_once(__VIEWS . "/{$view_name}.php");
         require_once(__VIEWS . "/layout/footer.php");
-        // require_once(__VIEWS . "/layout/popup.php");
+        require_once(__VIEWS . "/layout/popup.php");
     }
 }

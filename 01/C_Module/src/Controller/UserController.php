@@ -33,4 +33,18 @@ class UserController extends MasterController
         unset($_SESSION['user']);
         Lib::msgAndGo('로그아웃 되었습니다.', '/');
     }
+
+    public function myPageNormal()
+    {
+        $user = $_SESSION['user'];
+        $sql = 
+            "SELECT
+            d.id, s.name, d.driver_id, d.state, d.taking_at, d.order_at, di.id 'di_id', di.bread_id
+            from deliveries d, delivery_items di, stores s
+            where d.id = di.delivery_id and s.id = d.store_id and d.orderer_id = ?";
+        
+        $deliveryList = DB::fetchAll($sql, [$user->id]);
+
+        $this->render('mypage_normal', ['diList' => $deliveryList, 'userId' => $user->id]);
+    }
 }

@@ -264,7 +264,8 @@ header>ul>li {
     animation: bakery-border 1.5s linear infinite;
 }
 
-.bakery-title>.btn {
+.bakery-title>.btn,
+.issue>.btn {
     width: 75px;
     height: 30px;
     font-size: 14px;
@@ -315,30 +316,138 @@ header>ul>li {
 #bakery-4:checked ~ .bakery>.bakery-information:nth-child(4) { width: 500px; transform: scaleX(100%); }
 #bakery-5:checked ~ .bakery>.bakery-information:nth-child(5) { width: 500px; transform: scaleX(100%); }
 
-.radio-circle:checked ~ .bakery-menu>label:nth-child(1) { border-bottom: 3px solid #252b2f; }
-.radio-bar:checked ~ .bakery-menu>label:nth-child(2) { border-bottom: 3px solid #252b2f; }
-.radio-broken-line:checked ~ .bakery-menu>label:nth-child(3) { border-bottom: 3px solid #252b2f; }
+.radio-circle:checked ~ .bakery .bakery-menu>label:nth-child(1) { border-bottom: 3px solid #252b2f; }
+.radio-bar:checked ~ .bakery .bakery-menu>label:nth-child(2) { border-bottom: 3px solid #252b2f; }
+.radio-line:checked ~ .bakery .bakery-menu>label:nth-child(3) { border-bottom: 3px solid #252b2f; }
 
 
 /* 그래프 그리기 */
 
-.radio-circle:checked ~ .bakery-graph>.graph-circle { animation: circle-graph 2s 0.5s forwards; }
+
+.radio-circle:checked ~ .bakery .bakery-graph>div:not(.pie-graph) { display: none; }
+.radio-bar:checked ~ .bakery .bakery-graph>div:not(.bar-graph) { display: none; }
+.radio-line:checked ~ .bakery .bakery-graph>div:not(.line-graph) { display: none; }
 
 .bakery-graph {
     height: 240px;
     border: 1px solid #252b2f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
 }
 
-.bakery-graph div { transition: .5s; }
+.pie-graph,
+.bar-graph,
+.line-graph {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0; left: 0;
+}
 
-.graph-circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    transition: .5s;
+
+/* 원 그래프 */
+
+.pie-graph circle {
+    r: 50;
+    cx: 160;
+    cy: 120;
+    stroke-width: 100;
+    fill: none;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    stroke-dasharray: 0 314;
+}
+
+.pie-graph circle:nth-child(1) {
+    animation: pie1 0.5s linear forwards;
+    animation-delay: 1s;
+    stroke: #e7cf9f;
+}
+
+.pie-graph circle:nth-child(2) {
+    animation: pie2 0.5s linear forwards;
+    animation-delay: 0.5s;
+    stroke: #b7702c;
+}
+
+.pie-graph circle:nth-child(3) {
+    animation: pie3 0.5s linear forwards;
+    stroke: #8b6d4c;
+}
+
+@keyframes pie1 {
+    from { stroke-dasharray: 250 314; }
+    to { stroke-dasharray: 314 314; }
+}
+
+@keyframes pie2 {
+    from { stroke-dasharray: 157 314; }
+    to { stroke-dasharray: 250 314; }
+}
+
+@keyframes pie3 {
+    to { stroke-dasharray: 157 314; }
+}
+
+
+/* 막대 그래프 */
+
+.bar-graph rect:nth-child(1) { width: 0; height: 40px; animation: bar1 1s linear forwards; }
+.bar-graph rect:nth-child(2) { width: 0; height: 40px; animation: bar2 1s linear forwards; }
+.bar-graph rect:nth-child(3) { width: 0; height: 40px; animation: bar3 1s linear forwards; }
+
+@keyframes bar1 {
+    to { width: 280px; }
+}
+
+@keyframes bar2 {
+    to { width: 120px; }
+}
+
+@keyframes bar3 {
+    to { width: 200px; }
+}
+
+
+/* 꺾은선 그래프 */
+
+.line-graph { display: flex; }
+.line-graph circle:nth-child(1) { animation: line-circle1 1s linear forwards; }
+.line-graph circle:nth-child(2) { animation: line-circle2 1s linear forwards; }
+.line-graph circle:nth-child(3) { animation: line-circle3 1s linear forwards; }
+.line-graph circle:nth-child(4) { animation: line-circle4 1s linear forwards; }
+
+.line-graph path:nth-child(5) { animation: line-path1 1s linear forwards; }
+.line-graph path:nth-child(6) { animation: line-path2 1s linear forwards; }
+.line-graph path:nth-child(7) { animation: line-path3 1s linear forwards; }
+
+@keyframes line-circle1 {
+    to { cy: 120; }
+}
+
+@keyframes line-circle2 {
+    to { cy: 80; }
+}
+
+@keyframes line-circle3 {
+    to { cy: 120; }
+}
+
+@keyframes line-circle4 {
+    to { cy: 180; }
+}
+
+@keyframes line-path1 {
+    to { d: path("M10 120 110 80"); }
+}
+
+@keyframes line-path2 {
+    to { d: path("M110 80 210 120"); }
+}
+
+@keyframes line-path3 {
+    to { d: path("M210 120 310 180"); }
 }
 
 

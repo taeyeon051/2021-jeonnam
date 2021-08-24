@@ -1,0 +1,38 @@
+.order-check,
+.reservation-check {
+    width: 500px;
+}
+
+.order-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-card {
+    width: 450px;
+    border: 1px solid #ddd;
+    padding: 30px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.order-card>h5 {
+    margin-bottom: 20px;
+}
+
+.order-state {
+    position: absolute;
+    top: 25px; right: 30px;
+}
+
+.order-btns {
+    position: absolute;
+    right: 20px; bottom: 20px;
+}
+
+.reservation-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
