@@ -43,13 +43,23 @@
     padding-right: 0;
 }
 
-.left-main>div {
-    margin: 60px 0;
+.left-main>div { margin: 60px 0; }
+.issue>button { margin: 5px 35px; }
+
+.right-roulette { position: relative; padding: 55px; }
+.roulette-arrow {
+    width: 7px;
+    height: 30px;
+    position: absolute;
+    top: 40px; left: 50%;
+    z-index: 100;
+    transform: translateX(-50%);
+    background-color: #ff5;
 }
 
-.issue>button {
-    margin: 5px 35px;
-}
+/* .right-roulette>img:hover {
+    transform: rotateZ(828deg);
+} */
 
 
 /* 팝업 */

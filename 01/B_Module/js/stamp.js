@@ -79,7 +79,8 @@ class Stamp {
         const stampFile = document.querySelector("#stamp-file");
         stampFile.addEventListener("change", e => {
             const file = e.target.files.length > 0 ? e.target.files[0] : null;
-            log(e.target.value);
+            const path = e.target.value;
+            log(path);
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext('2d');
             const copyCanvas = document.createElement("canvas");
@@ -97,12 +98,12 @@ class Stamp {
 
                     await ctx.drawImage(image, 0, 0);
                     await copyCtx.drawImage(image, 0, 0);
-
+                    
                     for (let i = 0; i < 6; i++) {
                         let x, y;
                         x = i < 4 ? 103 * i + 20 : 103 * (i - 4) + 20;
                         y = i < 4 ? 78 : 173;
-
+                        
                         let stImg = ctx.getImageData(x, y, w, h);
                         if (i == 0) {
                             copyCtx.drawImage(this.stampImage, x, y);
@@ -113,6 +114,12 @@ class Stamp {
                         copyCtx.putImageData(stImg, cx, cy);
                     }
 
+                    // copyCtx.fillStyle = "red";
+                    // copyCtx.arc(163 + i * 15, 271, 3, 0, Math.PI * 2);
+                    // copyCtx.fillStyle = "green";
+                    // copyCtx.arc(178, 271, 3, 0, Math.PI * 2);
+                    // copyCtx.fill();
+                    
                     this.imgDownload(copyCanvas, file.name);
                     $("#code-input").val("");
                     this.closePopup();
@@ -123,6 +130,12 @@ class Stamp {
 
     drawImg(ctx, img) {
         ctx.drawImage(img, 0, 0);
+    }
+
+    drawCircle(ctx, x, y, color) {
+        ctx.fillStyle = color;
+        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fill();
     }
 
     imgDownload(c, name) {
