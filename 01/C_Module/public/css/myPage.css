@@ -1,3 +1,5 @@
+/* 고객 */
+
 .order-check,
 .reservation-check {
     width: 500px;
@@ -21,7 +23,7 @@
     margin-bottom: 20px;
 }
 
-.order-state {
+.state {
     position: absolute;
     top: 25px; right: 30px;
 }
@@ -35,4 +37,18 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
+}
+
+.reservation-cards .card { position: relative; padding: 5px; }
+.order-card ol span { float: right; }
+
+
+/* 라이더 */
+
+.profile {
+    width: 300px;
+}
+
+.profile>.row {
+    margin: 20px 0;
 }

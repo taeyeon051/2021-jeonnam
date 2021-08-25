@@ -1,36 +1,34 @@
 <?php
 
 use Kty\App\DB;
-use Kty\Library\TimeFormat;
+use Kty\Library\Format;
 ?>
-<section class="my-5 py-5 d-flex justify-content-evenly">
+<section class="my-5 py-5 d-flex justify-content-evenly" style="min-height: 400px;">
     <!-- 주문 조회 영역 -->
     <div class="order-check">
         <h3 class="text-center mb-4">주문조회</h3>
         <div class="order-cards">
-            <?php $diIdx = -1; ?>
             <?php foreach ($diList as $di) : ?>
-                <?php $diIdx += 1; ?>
-                <?php if ($diIdx < count($diList) - 1) : ?>
-                    <?php if ($diList[$diIdx]->id == $diList[$diIdx + 1]->id) continue; ?>
-                <?php endif; ?>
                 <div class="order-card">
                     <h5><?= $di->name ?></h5>
-                    <p><?= TimeFormat::format($di->order_at) ?></p>
-                    <p>종류 및 가격 수량</p>
+                    <p><?= Format::timeFormat($di->order_at) ?></p>
+                    <ol>
+                        <?php foreach ($breadList as $b) : ?>
+                            <?php if ($b->delivery_id == $di->id) : ?>
+                                <li><?= $b->name ?> <span><?= number_format($b->price) ?>원 (<?= $b->cnt ?>개)</span></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ol>
                     <?php if ($di->state == "taking" || $di->state == "complete") : ?>
                         <p><?= DB::fetch("SELECT * FROM users WHERE id = ?", [$di->driver_id])->name ?></p>
-                        <p class="mb-0"><?= TimeFormat::format($di->taking_at) ?></p>
+                        <p class="mb-0"><?= Format::timeFormat($di->taking_at) ?></p>
                     <?php endif; ?>
-                    <?php $stateArr = array("order" => "주문 대기", "accept" => "상품 준비 중", "reject" => "주문 거절", "taking" => "배달 중", "complete" => "배달 완료"); ?>
-                    <?php foreach ($stateArr as $key => $value) : ?>
-                        <?php if ($key == $di->state) : ?>
-                            <div class="order-state"><?= $value ?></div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
+                    <div class="state"><?= Format::dstateFormat($di->state) ?></div>
                     <div class="order-btns">
-                        <button id="order-review-btn" class="btn btn-brown">리뷰</button>
-                        <button id="order-gpa-btn" class="btn btn-brown">평점</button>
+                        <?php if ($di->state == "complete") : ?>
+                            <button id="order-review-btn" class="btn btn-brown">리뷰</button>
+                            <button id="order-gpa-btn" class="btn btn-brown">평점</button>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -41,38 +39,16 @@ use Kty\Library\TimeFormat;
     <div class="reservation-check">
         <h3 class="text-center mb-4">예약조회</h3>
         <div class="reservation-cards">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">빵집이름</h5>
-                    <p>예약일시</p>
-                    <p>예약신청일시</p>
-                    <p>상태</p>
+            <?php foreach ($reservationList as $r) : ?>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $r->name ?></h5>
+                        <p class="mt-2">예약 일시<br><?= Format::timeFormat($r->reservation_at) ?></p>
+                        <p class="mb-0">예약 신청 일시<br><?= Format::timeFormat($r->request_at) ?></p>
+                        <div class="state"><?= Format::rstateFormat($r->state) ?></div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">빵집이름</h5>
-                    <p>예약일시</p>
-                    <p>예약신청일시</p>
-                    <p>상태</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">빵집이름</h5>
-                    <p>예약일시</p>
-                    <p>예약신청일시</p>
-                    <p>상태</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">빵집이름</h5>
-                    <p>예약일시</p>
-                    <p>예약신청일시</p>
-                    <p>상태</p>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

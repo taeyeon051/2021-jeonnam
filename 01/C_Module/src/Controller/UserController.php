@@ -37,14 +37,36 @@ class UserController extends MasterController
     public function myPageNormal()
     {
         $user = $_SESSION['user'];
-        $sql = 
+        $deliveriesSql =
             "SELECT
-            d.id, s.name, d.driver_id, d.state, d.taking_at, d.order_at, di.id 'di_id', di.bread_id
-            from deliveries d, delivery_items di, stores s
+            distinct d.id, s.name, d.driver_id, d.state, d.taking_at, d.order_at
+            from stores s, deliveries d, delivery_items di
             where d.id = di.delivery_id and s.id = d.store_id and d.orderer_id = ?";
-        
-        $deliveryList = DB::fetchAll($sql, [$user->id]);
 
-        $this->render('mypage_normal', ['diList' => $deliveryList, 'userId' => $user->id]);
+        $breadSql =
+            "SELECT 
+            di.id, di.delivery_id, di.bread_id, di.price, di.cnt, b.name
+            FROM breads b, deliveries d
+            JOIN delivery_items di
+            ON d.id = di.delivery_id
+            WHERE d.orderer_id = ? and b.id = di.bread_id";
+
+        $deliveryList = DB::fetchAll($deliveriesSql, [$user->id]);
+        $breadList = DB::fetchAll($breadSql, [$user->id]);
+        $reservationList = DB::fetchAll("SELECT r.*, s.name FROM reservations r, stores s WHERE r.user_id = ? and r.store_id = s.id", [$user->id]);
+
+        $this->render('mypage_normal', ['diList' => $deliveryList, 'breadList' => $breadList, 'reservationList' => $reservationList]);
+    }
+
+    public function myPageOwner()
+    {
+        $this->render('mypage_owner');
+    }
+
+    public function myPageRider()
+    {
+        $locationList = DB::fetchAll("SELECT * FROM locations");
+
+        $this->render('mypage_rider', ['locationList' => $locationList]);
     }
 }
