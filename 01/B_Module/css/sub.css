@@ -86,6 +86,12 @@
 .popup-header { height: 35px; }
 .popup-header>.close-btn { font-size: 18px; }
 .popup-btns>.btn { margin-left: 5px; }
+#select-card .input-group { width: auto; }
+
+#map-popup { background-color: #fff; }
+#map-popup>.inner { width: 800px; height: 800px; }
+#map-popup .close-btn { position: absolute; top: 20px; right: 20px; }
+.popup canvas { border: 1px solid #000; }
 
 
 /* 로그인 페이지 */

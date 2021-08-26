@@ -70,62 +70,107 @@ class Stamp {
             const { codeList } = this;
             codeList.forEach(c => {
                 if (c == code) {
-                    $("#select-card").fadeIn('slow');
-                    $("#select-card").css('display', 'flex');
+                    $("#select-card").fadeIn('slow').css('display', 'flex');
                 }
             });
         });
 
         const stampFile = document.querySelector("#stamp-file");
-        stampFile.addEventListener("change", e => {
-            const file = e.target.files.length > 0 ? e.target.files[0] : null;
-            const path = e.target.value;
-            log(path);
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext('2d');
-            const copyCanvas = document.createElement("canvas");
-            const copyCtx = copyCanvas.getContext('2d');
-            const { width: w, height: h } = this.stampImage;
+        stampFile.addEventListener("click", async e => {
+            e.preventDefault();
 
+            const [fileHandle] = await window.showOpenFilePicker();
+            const file = await fileHandle.getFile();
+            document.querySelector("#stamp-file-name").innerHTML = file.name;
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => {
                 const image = new Image();
                 image.src = reader.result;
                 image.onload = async () => {
-                    canvas.width = copyCanvas.width = image.width;
-                    canvas.height = copyCanvas.height = image.height;
-
-                    await ctx.drawImage(image, 0, 0);
-                    await copyCtx.drawImage(image, 0, 0);
+                    const canvas = document.createElement("canvas");
+                    const ctx = canvas.getContext("2d");
+                    log(image.width, image.height);
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    await this.drawImg(ctx, image);
+                    await this.addStamp(ctx);
                     
-                    for (let i = 0; i < 6; i++) {
-                        let x, y;
-                        x = i < 4 ? 103 * i + 20 : 103 * (i - 4) + 20;
-                        y = i < 4 ? 78 : 173;
-                        
-                        let stImg = ctx.getImageData(x, y, w, h);
-                        if (i == 0) {
-                            copyCtx.drawImage(this.stampImage, x, y);
-                        }
-                        let cx, cy;
-                        cx = (i + 1) < 4 ? 103 * (i + 1) + 20 : 103 * ((i + 1) - 4) + 20;
-                        cy = (i + 1) < 4 ? 78 : 173;
-                        copyCtx.putImageData(stImg, cx, cy);
-                    }
-
-                    // copyCtx.fillStyle = "red";
-                    // copyCtx.arc(163 + i * 15, 271, 3, 0, Math.PI * 2);
-                    // copyCtx.fillStyle = "green";
-                    // copyCtx.arc(178, 271, 3, 0, Math.PI * 2);
-                    // copyCtx.fill();
-                    
-                    this.imgDownload(copyCanvas, file.name);
-                    $("#code-input").val("");
-                    this.closePopup();
+                    setTimeout(() => {                        
+                        canvas.toBlob(blob => {
+                            this.writeFile(fileHandle, blob);
+                        });
+                    }, 0);
                 }
             }
         });
+
+        /*
+        *         for (let i = 0; i < 6; i++) {
+        *             let x, y;
+        *             x = i < 4 ? 103 * i + 20 : 103 * (i - 4) + 20;
+        *             y = i < 4 ? 78 : 173;
+
+        *             let stImg = ctx.getImageData(x, y, w, h);
+        *             if (i == 0) {
+        *                 copyCtx.drawImage(this.stampImage, x, y);
+        *             }
+        *             let cx, cy;
+        *             cx = (i + 1) < 4 ? 103 * (i + 1) + 20 : 103 * ((i + 1) - 4) + 20;
+        *             cy = (i + 1) < 4 ? 78 : 173;
+        *             copyCtx.putImageData(stImg, cx, cy);
+        *         }
+
+        * copyCtx.fillStyle = "red";
+        * copyCtx.arc(163 + i * 15, 271, 3, 0, Math.PI * 2);
+        * copyCtx.fillStyle = "green";
+        * copyCtx.arc(178, 271, 3, 0, Math.PI * 2);
+        * copyCtx.fill();
+
+        *         this.imgDownload(copyCanvas, file.name);
+        *         $("#code-input").val("");
+        *         this.closePopup();
+        */
+    }
+
+    addStamp(ctx) {
+        const stampImg = new Image();
+        stampImg.src = "/B 모듈/stamp/스탬프.png";
+        stampImg.onload = () => {
+            const scanvas = document.createElement("canvas");
+            const sctx = scanvas.getContext('2d');
+            const { width: w, height: h } = stampImg;
+            scanvas.width = w;
+            scanvas.height = h;
+
+            this.drawImg(sctx, stampImg);
+            let i = 0;
+            while (i < 7) {
+                let x, y;
+                x = i < 4 ? 103 * i + 20 : 103 * (i - 4) + 20;
+                y = i < 4 ? 78 : 173;
+                const stamp = sctx.getImageData(0, 0, w, h);
+                const getStamp = ctx.getImageData(x, y, w, h);
+
+                if (stamp.data == getStamp.data) {
+                    this.drawCircle(ctx, 163 + i * 15, 271, 'green');                    
+                } else {
+                    ctx.putImageData(stamp, x, y);
+                    break;
+                }
+                i++;
+            }
+        }
+    }
+
+    async writeFile(fileHandle, blob) {
+        try {
+            const writable = await fileHandle.createWritable();
+            await writable.write(blob);
+            await writable.close();
+        } catch (e) {
+            log(e);
+        }
     }
 
     drawImg(ctx, img) {
