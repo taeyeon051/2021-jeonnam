@@ -95,10 +95,13 @@ class Stamp {
                     canvas.height = image.height;
                     await this.drawImg(ctx, image);
                     await this.addStamp(ctx);
-                    
-                    setTimeout(() => {                        
-                        canvas.toBlob(blob => {
-                            this.writeFile(fileHandle, blob);
+
+                    $("#stamp-file-name").html("선택된 파일 없음");
+                    this.closePopup();
+
+                    setTimeout(() => {
+                        canvas.toBlob(async blob => {
+                            await this.writeFile(fileHandle, blob);
                         });
                     }, 0);
                 }
@@ -106,30 +109,11 @@ class Stamp {
         });
 
         /*
-        *         for (let i = 0; i < 6; i++) {
-        *             let x, y;
-        *             x = i < 4 ? 103 * i + 20 : 103 * (i - 4) + 20;
-        *             y = i < 4 ? 78 : 173;
-
-        *             let stImg = ctx.getImageData(x, y, w, h);
-        *             if (i == 0) {
-        *                 copyCtx.drawImage(this.stampImage, x, y);
-        *             }
-        *             let cx, cy;
-        *             cx = (i + 1) < 4 ? 103 * (i + 1) + 20 : 103 * ((i + 1) - 4) + 20;
-        *             cy = (i + 1) < 4 ? 78 : 173;
-        *             copyCtx.putImageData(stImg, cx, cy);
-        *         }
-
         * copyCtx.fillStyle = "red";
         * copyCtx.arc(163 + i * 15, 271, 3, 0, Math.PI * 2);
         * copyCtx.fillStyle = "green";
         * copyCtx.arc(178, 271, 3, 0, Math.PI * 2);
         * copyCtx.fill();
-
-        *         this.imgDownload(copyCanvas, file.name);
-        *         $("#code-input").val("");
-        *         this.closePopup();
         */
     }
 
@@ -142,23 +126,23 @@ class Stamp {
             const { width: w, height: h } = stampImg;
             scanvas.width = w;
             scanvas.height = h;
-
             this.drawImg(sctx, stampImg);
+
             let i = 0;
-            while (i < 7) {
+            while (i < 8) {
                 let x, y;
                 x = i < 4 ? 103 * i + 20 : 103 * (i - 4) + 20;
                 y = i < 4 ? 78 : 173;
                 const stamp = sctx.getImageData(0, 0, w, h);
                 const getStamp = ctx.getImageData(x, y, w, h);
 
-                if (stamp.data == getStamp.data) {
-                    this.drawCircle(ctx, 163 + i * 15, 271, 'green');                    
+                if (JSON.stringify(stamp.data) == JSON.stringify(getStamp.data)) {
+                    i++;
                 } else {
+                    this.drawCircle(ctx, 163 + i * 15, 271, 'green');
                     ctx.putImageData(stamp, x, y);
                     break;
                 }
-                i++;
             }
         }
     }
@@ -168,6 +152,7 @@ class Stamp {
             const writable = await fileHandle.createWritable();
             await writable.write(blob);
             await writable.close();
+            alert("스탬프를 찍었습니다.");
         } catch (e) {
             log(e);
         }
