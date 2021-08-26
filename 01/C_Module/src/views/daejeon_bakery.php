@@ -22,7 +22,7 @@
                                 <h5 class="card-title"><?= $list[$i]->name ?></h5>
                                 <p class="card-text mb-1 local"><?= $list[$i]->location ?></p>
                                 <p class="card-text mb-1"><i class="fa fa-phone me-2"></i><?= $list[$i]->connect ?></p>
-                                <p class="card-text mb-1">평점 : <?= $list[$i]->gpa == null ? 0 : $list[$i]->gpa ?>점</p>
+                                <p class="card-text mb-1">평점 : <?= $list[$i]->gpa == null ? 0 : round($list[$i]->gpa, 1) ?>점</p>
                                 <p class="card-text">리뷰 : <?= $list[$i]->review ?>개</p>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                 <h5 class="card-title"><?= $list[$i]->name ?></h5>
                                 <p class="card-text mb-1 local"><?= $list[$i]->location ?></p>
                                 <p class="card-text mb-1"><i class="fa fa-phone me-2"></i><?= $list[$i]->connect ?></p>
-                                <p class="card-text mb-1">평점 : <?= $list[$i]->gpa == null ? 0 : $list[$i]->gpa ?>점</p>
+                                <p class="card-text mb-1">평점 : <?= $list[$i]->gpa == null ? 0 : round($list[$i]->gpa, 1) ?>점</p>
                                 <p class="card-text">리뷰 : <?= $list[$i]->review ?>개</p>
                             </div>
                         </div>
