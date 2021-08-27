@@ -90,7 +90,6 @@ class Stamp {
                 image.onload = async () => {
                     const canvas = document.createElement("canvas");
                     const ctx = canvas.getContext("2d");
-                    log(image.width, image.height);
                     canvas.width = image.width;
                     canvas.height = image.height;
                     await this.drawImg(ctx, image);
@@ -108,6 +107,64 @@ class Stamp {
             }
         });
 
+        const eventFile = document.querySelector("#event-file");
+        eventFile.addEventListener("click", async e => {
+            e.preventDefault();
+
+            const [fileHandle] = await window.showOpenFilePicker();
+            const file = await fileHandle.getFile();
+            document.querySelector("#event-file-name").innerHTML = file.name;
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                const image = new Image();
+                image.src = reader.result;
+                image.onload = async () => {
+                    const canvas = document.createElement("canvas");
+                    const ctx = canvas.getContext("2d");
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    await this.drawImg(ctx, image);
+                    document.body.appendChild(canvas);
+
+                    const copyCanvas = document.createElement("canvas");
+                    const copyCtx = copyCanvas.getContext("2d");
+                    const getData = ctx.getImageData(163 - 3, 271 - 3, 6, 6);
+                    copyCanvas.width = copyCanvas.height = 6;
+                    setTimeout(() => {
+                        copyCtx.putImageData(getData, 0, 0);
+                        document.body.appendChild(copyCanvas);
+                    }, 0);
+
+                    const check = await this.participateEventCheck(ctx);
+                    if (check) {
+                        const roulette = $(".right-roulette img");
+                        const random = this.randomNumber();
+
+                        let deg = 0;
+                        const animation = setInterval(() => {
+                            deg += (360 * 3 - random * 36) / 30;
+                            if (deg >= (360 * 3 - random * 36)) {
+                                deg = (360 * 3 - random * 36);
+                                $(roulette).css({ 'transform': `rotateZ(${deg}deg)` });
+                                clearInterval(animation);
+                                alert(`축하합니다. ${this.couponList[random]}에 당첨되었습니다.`);
+                            }
+                            $(roulette).css({ 'transition': '1s ease-out', 'transform': `rotateZ(${deg}deg)` });
+                        }, 1000 / 30);
+
+                        $("#event-file-name").html("선택된 파일 없음");
+
+                        setTimeout(() => {
+                            canvas.toBlob(async blob => {
+                                await this.writeFile(fileHandle, blob);
+                            });
+                        }, 0);
+                    }
+                }
+            }
+        });
+
         /*
         * copyCtx.fillStyle = "red";
         * copyCtx.arc(163 + i * 15, 271, 3, 0, Math.PI * 2);
@@ -115,6 +172,46 @@ class Stamp {
         * copyCtx.arc(178, 271, 3, 0, Math.PI * 2);
         * copyCtx.fill();
         */
+    }
+
+    randomNumber() {
+        return Math.floor(Math.random() * 10);
+    }
+
+    participateEventCheck(ctx) {
+        let check = false;
+        const rcanvas = document.createElement("canvas");
+        const rctx = rcanvas.getContext("2d");
+        const gcanvas = document.createElement("canvas");
+        const gctx = gcanvas.getContext('2d');
+        rcanvas.width = rcanvas.height = gcanvas.width = gcanvas.height = 6;
+        this.drawCircle(rctx, 3, 3, 'red');
+        this.drawCircle(gctx, 3, 3, '#00d701');
+        document.body.appendChild(rcanvas);
+        document.body.appendChild(gcanvas);
+
+        let i = 0;
+        while (i < 8) {
+            let x, y;
+            x = 163 + i * 15;
+            y = 271;
+            const red = rctx.getImageData(0, 0, 6, 6);
+            const green = gctx.getImageData(0, 0, 6, 6);
+            const getImage = ctx.getImageData(x - 3, y - 3, 6, 6);
+
+            if (JSON.stringify(red.data) == JSON.stringify(getImage.data)) {
+                i++;
+            } else if (JSON.stringify(green.data) == JSON.stringify(getImage.data)) {
+                check = true;
+                this.drawCircle(ctx, x, y, 'red');
+                break;
+            } else {
+                check = false;
+                break;
+            }
+        }
+        log(check);
+        return check;
     }
 
     addStamp(ctx) {
@@ -139,7 +236,7 @@ class Stamp {
                 if (JSON.stringify(stamp.data) == JSON.stringify(getStamp.data)) {
                     i++;
                 } else {
-                    this.drawCircle(ctx, 163 + i * 15, 271, 'green');
+                    this.drawCircle(ctx, 163 + i * 15, 271, '#00d701');
                     ctx.putImageData(stamp, x, y);
                     break;
                 }
