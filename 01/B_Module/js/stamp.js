@@ -100,7 +100,7 @@ class Stamp {
 
                     setTimeout(() => {
                         canvas.toBlob(async blob => {
-                            await this.writeFile(fileHandle, blob);
+                            await this.writeFile(fileHandle, blob, "stamp");
                         });
                     }, 0);
                 }
@@ -125,79 +125,64 @@ class Stamp {
                     canvas.width = image.width;
                     canvas.height = image.height;
                     await this.drawImg(ctx, image);
-                    document.body.appendChild(canvas);
 
-                    const copyCanvas = document.createElement("canvas");
-                    const copyCtx = copyCanvas.getContext("2d");
-                    const getData = ctx.getImageData(163 - 3, 271 - 3, 6, 6);
-                    copyCanvas.width = copyCanvas.height = 6;
-                    setTimeout(() => {
-                        copyCtx.putImageData(getData, 0, 0);
-                        document.body.appendChild(copyCanvas);
-                    }, 0);
-
-                    const check = await this.participateEventCheck(ctx);
+                    const check = await this.participateEventCheck(ctx, canvas.width, canvas.height);
                     if (check) {
                         const roulette = $(".right-roulette img");
-                        const random = this.randomNumber();
-
+                        $(roulette).css({ 'transition': 'none', 'transform': 'none' });
+                        let random = this.randomNumber();
+                        
                         let deg = 0;
                         const animation = setInterval(() => {
-                            deg += (360 * 3 - random * 36) / 30;
-                            if (deg >= (360 * 3 - random * 36)) {
-                                deg = (360 * 3 - random * 36);
-                                $(roulette).css({ 'transform': `rotateZ(${deg}deg)` });
+                            deg += (360 * 3 + (10 - random) * 36) / 30;
+                            if (deg >= (360 * 3 + (10 - random) * 36)) {
+                                deg = (360 * 3 + (10 - random) * 36);
                                 clearInterval(animation);
-                                alert(`축하합니다. ${this.couponList[random]}에 당첨되었습니다.`);
+                                $(roulette).css({'transition': 'none', 'transform': `rotateZ(${deg}deg)` });
+                                $("#event-file-name").html("선택된 파일 없음");
+                                setTimeout(() => {
+                                    canvas.toBlob(async blob => {
+                                        await this.writeFile(fileHandle, blob, "event", random);
+                                    });
+                                }, 1000);
                             }
-                            $(roulette).css({ 'transition': '1s ease-out', 'transform': `rotateZ(${deg}deg)` });
+                            $(roulette).css({'transition': '1s ease-out', 'transform': `rotateZ(${deg}deg)` });
                         }, 1000 / 30);
-
+                    } else {
+                        alert("참여 횟수가 모두 차감되어 이벤트에 참여할 수 없습니다.");
                         $("#event-file-name").html("선택된 파일 없음");
-
-                        setTimeout(() => {
-                            canvas.toBlob(async blob => {
-                                await this.writeFile(fileHandle, blob);
-                            });
-                        }, 0);
                     }
                 }
             }
         });
-
-        /*
-        * copyCtx.fillStyle = "red";
-        * copyCtx.arc(163 + i * 15, 271, 3, 0, Math.PI * 2);
-        * copyCtx.fillStyle = "green";
-        * copyCtx.arc(178, 271, 3, 0, Math.PI * 2);
-        * copyCtx.fill();
-        */
     }
 
     randomNumber() {
         return Math.floor(Math.random() * 10);
     }
 
-    participateEventCheck(ctx) {
+    participateEventCheck(ctx, w, h) {
         let check = false;
+        const image = ctx.getImageData(0, 0, w, h);
         const rcanvas = document.createElement("canvas");
         const rctx = rcanvas.getContext("2d");
         const gcanvas = document.createElement("canvas");
         const gctx = gcanvas.getContext('2d');
-        rcanvas.width = rcanvas.height = gcanvas.width = gcanvas.height = 6;
-        this.drawCircle(rctx, 3, 3, 'red');
-        this.drawCircle(gctx, 3, 3, '#00d701');
-        document.body.appendChild(rcanvas);
-        document.body.appendChild(gcanvas);
+        rcanvas.width = gcanvas.width = w;
+        rcanvas.height = gcanvas.height = h;
+        rctx.putImageData(image, 0, 0);
+        gctx.putImageData(image, 0, 0);
+        this.drawCircle(rctx, 163, 271, 'red');
+        this.drawCircle(gctx, 163, 271, '#00d701');
 
         let i = 0;
         while (i < 8) {
             let x, y;
             x = 163 + i * 15;
             y = 271;
-            const red = rctx.getImageData(0, 0, 6, 6);
-            const green = gctx.getImageData(0, 0, 6, 6);
-            const getImage = ctx.getImageData(x - 3, y - 3, 6, 6);
+            const red = rctx.getImageData(163, 271, 2, 2);
+            const green = gctx.getImageData(163, 271, 2, 2);
+            const getImage = ctx.getImageData(x, y, 2, 2);
 
             if (JSON.stringify(red.data) == JSON.stringify(getImage.data)) {
                 i++;
@@ -210,7 +195,7 @@ class Stamp {
                 break;
             }
         }
-        log(check);
+
         return check;
     }
 
@@ -244,12 +229,16 @@ class Stamp {
         }
     }
 
-    async writeFile(fileHandle, blob) {
+    async writeFile(fileHandle, blob, se, random) {
         try {
             const writable = await fileHandle.createWritable();
             await writable.write(blob);
             await writable.close();
-            alert("스탬프를 찍었습니다.");
+            if (se == "stamp") {
+                alert("스탬프를 찍었습니다.");
+            } else if (se == "event") {
+                alert(`축하합니다. ${this.couponList[random]}에 당첨되었습니다.`);
+            }
         } catch (e) {
             log(e);
         }
