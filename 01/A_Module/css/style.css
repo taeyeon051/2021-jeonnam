@@ -309,11 +309,11 @@ header>ul>li {
 #bakery-4:checked ~ .map-img>.bakery-4 { color: #bb9356; }
 #bakery-5:checked ~ .map-img>.bakery-5 { color: #bb9356; }
 
-#bakery-1:checked ~ .bakery>.bakery-information:nth-child(1) { width: 500px; transform: scaleX(100%); }
-#bakery-2:checked ~ .bakery>.bakery-information:nth-child(2) { width: 500px; transform: scaleX(100%); }
-#bakery-3:checked ~ .bakery>.bakery-information:nth-child(3) { width: 500px; transform: scaleX(100%); }
-#bakery-4:checked ~ .bakery>.bakery-information:nth-child(4) { width: 500px; transform: scaleX(100%); }
-#bakery-5:checked ~ .bakery>.bakery-information:nth-child(5) { width: 500px; transform: scaleX(100%); }
+#bakery-1:checked ~ .bakery>.bakery-information:nth-child(1) { transform: scaleX(100%); }
+#bakery-2:checked ~ .bakery>.bakery-information:nth-child(2) { transform: scaleX(100%); }
+#bakery-3:checked ~ .bakery>.bakery-information:nth-child(3) { transform: scaleX(100%); }
+#bakery-4:checked ~ .bakery>.bakery-information:nth-child(4) { transform: scaleX(100%); }
+#bakery-5:checked ~ .bakery>.bakery-information:nth-child(5) { transform: scaleX(100%); }
 
 .radio-circle:checked ~ .bakery .bakery-menu>label:nth-child(1) { border-bottom: 3px solid #252b2f; }
 .radio-bar:checked ~ .bakery .bakery-menu>label:nth-child(2) { border-bottom: 3px solid #252b2f; }
