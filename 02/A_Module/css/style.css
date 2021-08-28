@@ -1,0 +1,544 @@
+@font-face {
+    font-family: 'NotoSansCJKkr-Bold';
+    src: url(../fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Bold.otf);
+}
+
+@font-face {
+    font-family: 'NotoSansCJKkr-Medium';
+    src: url(../fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Medium.otf);
+}
+
+* {
+    list-style: none;
+    text-decoration: none;
+    font-family: 'NotoSansCJKkr-Medium';
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: 'NotoSansCJKkr-Bold'; }
+ul { margin: 0; padding: 0; }
+a, a:hover { color: #252b2f; text-decoration: none; }
+.text-brown { color: #bb9356; }
+.btn-brown { background-color: #bb9356; color: #fff; }
+.btn-outline-brown { border: 1px solid #bb9356; color: #bb9356; }
+.btn-brown:hover { color: #fff; }
+.btn-outline-brown:hover { background-color: #bb9356; color: #fff; }
+#tour-introduction img, #event-news img, #sponsor img { transition: .5s; }
+#tour-introduction img:hover, #event-news img:hover, #sponsor img:hover { transform: scale(1.05); }
+
+
+/* 헤더 영역 */
+
+header {
+    height: 80px;
+    padding: 0 120px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+header>ul {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header>ul a { width: 100%; transition: .3s; }
+header>ul a:hover { color: #bb9356; }
+
+#menu {
+    width: 550px;
+    margin-left: 250px;
+}
+
+header>ul>li {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hamburger>i, #side-menu, #side-off { display: none; }
+
+
+/* 비주얼 이미지 영역 */
+
+#visual {
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    position: relative;
+}
+
+.visual-images {
+    width: 100%;
+    height: 100%;
+}
+
+.visual-images>img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(80%); 
+}
+
+.visual-images>img:nth-child(1), .visual-text:nth-child(1) { left: 0; animation: slider1 9s 1s infinite forwards; }
+.visual-images>img:nth-child(2), .visual-text:nth-child(2) { animation: slider2 9s 1s infinite forwards; }
+.visual-images>img:nth-child(3), .visual-text:nth-child(3) { animation: slider3 9s 1s infinite forwards; }
+
+.visual-text {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 50%; left: 100%;
+    z-index: 10;
+    transform: translateY(-50%);
+}
+
+@keyframes slider1 {
+    0% { left: 0; z-index: 2; }
+    33.333% { left: -100%; z-index: -1; }
+    66.666% { left: 100%; z-index: -1; }
+    100% { left: 0; z-index: 2; }
+}
+
+@keyframes slider2 {
+    0% { left: 100%; z-index: -1; }
+    33.333% { left: 0; z-index: 2; }
+    66.666% { left: -100%; z-index: -1; }
+    100% { left: 100%; z-index: -1; }
+}
+
+@keyframes slider3 {
+    0% { left: -100%; z-index: -1; }
+    33.333% { left: 100%; z-index: -1; }
+    66.666% { left: 0; z-index: 2; }
+    100% { left: -100%; z-index: -1; }
+}
+
+.pp-btns {
+    position: absolute;
+    bottom: 30px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+#slide-pause:checked ~ div>* { animation-play-state: paused; }
+#slide-pause:checked ~ .pp-btns>.pause-btn { display: none; }
+#slide-play:checked ~ div>* { animation-play-state: running; }
+#slide-play:checked ~ .pp-btns>.play-btn { display: none; }
+.pp-btns i { font-size: 28px; cursor: pointer; color: #fff; transition: .5s; }
+.pp-btns i:hover { transform: scale(1.1); }
+
+
+/* 대전 브레드투어 소개 영역 */
+
+#tour-introduction {
+    width: 100%;
+    padding: 50px 150px;
+    background-color: #f7f5ed;
+}
+
+.tour-img>img { width: 500px; }
+.tour-text p { letter-spacing: 1px; }
+.tour-text span { color: #bb9356; }
+
+
+/* 이벤트 소개 영역 */
+
+#event-news { justify-content: space-evenly; padding: 0 25px; }
+#event-news img { width: 330px; margin: 0 10px; }
+
+
+/* 새소식 영역 */
+
+#news { width: 550px; }
+.tab-menu { position: relative; }
+.tab-menu li { float: left; }
+.tab-menu label { height: 40px; cursor: pointer; }
+.tab-con {
+    height: 250px;
+    display: none;
+    top: 50px; left: 0;
+}
+
+.news-item {
+    height: 60px;
+    border-bottom: 1px solid #8b6d4c;
+    display: flex;
+    justify-content: space-between;
+    cursor: default;
+}
+
+.news-item>span {
+    font-size: 14px;
+    margin: 0 10px;
+    line-height: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: .5s;
+}
+
+.news-item>span:nth-child(1):hover { transform: translateX(10px); }
+.tab-menu input:checked ~ label { border-bottom: 3px solid #8b6d4c; }
+.tab-menu input:checked ~ .tab-con { display: block; }
+
+
+/* 지도 영역 */
+
+#map { padding: 50px; background-color: #f7f5ed; }
+.tour-course-title-border { width: 190px; height: 3px; background-color: #bb9356; transition: 1s; }
+#map:hover>.tour-course-title-border { width: 100%; }
+
+.map-img { width: 700px; position: relative; }
+.map-img img { width: 100%; }
+
+.map-img label {
+    color: #6a9065;
+    font-size: 36px;
+    font-family: 'NotoSansCJKkr-Bold';
+    position: absolute;
+    cursor: pointer;
+}
+
+.bakery-1 { top: 208px; left: 186px; }
+.bakery-2 { top: 262px; left: 397px; }
+.bakery-3 { top: 388px; left: 105px; }
+.bakery-4 { top: 406px; left: 496px; }
+.bakery-5 { top: 495px; left: 358px; }
+
+.bakery-information {
+    position: absolute;
+    right: 5px;
+    width: 500px;
+    height: 750px;
+    overflow: hidden;
+    padding: 25px;
+    transform: scaleX(0);
+    transition: .5s;
+    background-color: #fff;
+    border: 1px solid #bb9356;
+}
+
+.bakery-title-border {
+    width: 100%;
+    height: 2px;
+    background-color: #bb9356;
+    margin: 5px auto;
+}
+
+.bakery-title>.btn {
+    width: 75px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 15px;
+    padding: 4px 8px;
+    margin: 0 0 7px 15px;
+}
+
+.bakery-menu {
+    height: 50px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.bakery-menu>label {
+    width: 140px;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.bakery-main-menu {
+    height: 70px;
+    padding-top: 15px;
+    text-align: center;
+    word-break: keep-all;
+    cursor: default;
+}
+
+.bakery-main-menu span { color: #bb9356; }
+.bakery-exp { padding-top: 0 30px; word-break: keep-all; cursor: default; }
+
+
+/* 맵 버튼 클릭 */
+
+#bakery-1:checked ~ .map-img>.bakery-1 { color: #bb9356; }
+#bakery-2:checked ~ .map-img>.bakery-2 { color: #bb9356; }
+#bakery-3:checked ~ .map-img>.bakery-3 { color: #bb9356; }
+#bakery-4:checked ~ .map-img>.bakery-4 { color: #bb9356; }
+#bakery-5:checked ~ .map-img>.bakery-5 { color: #bb9356; }
+
+#bakery-1:checked ~ .bakery>.bakery-information:nth-child(1) { transform: scaleX(100%); }
+#bakery-2:checked ~ .bakery>.bakery-information:nth-child(2) { transform: scaleX(100%); }
+#bakery-3:checked ~ .bakery>.bakery-information:nth-child(3) { transform: scaleX(100%); }
+#bakery-4:checked ~ .bakery>.bakery-information:nth-child(4) { transform: scaleX(100%); }
+#bakery-5:checked ~ .bakery>.bakery-information:nth-child(5) { transform: scaleX(100%); }
+
+.radio-circle:checked ~ .bakery .bakery-menu>label:nth-child(1) { border-bottom: 3px solid #252b2f; }
+.radio-bar:checked ~ .bakery .bakery-menu>label:nth-child(2) { border-bottom: 3px solid #252b2f; }
+.radio-line:checked ~ .bakery .bakery-menu>label:nth-child(3) { border-bottom: 3px solid #252b2f; }
+
+
+/* 그래프 그리기 */
+
+.radio-circle:checked ~ .bakery .bakery-graph>div:not(.pie-graph) { display: none; }
+.radio-bar:checked ~ .bakery .bakery-graph>div:not(.bar-graph) { display: none; }
+.radio-line:checked ~ .bakery .bakery-graph>div:not(.line-graph) { display: none; }
+
+.bakery-graph {
+    height: 240px;
+    border: 1px solid #252b2f;
+    position: relative;
+}
+
+.pie-graph,
+.bar-graph,
+.line-graph {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+
+/* 원 그래프 */
+
+.pie-graph circle {
+    r: 50;
+    cx: 160;
+    cy: 120;
+    stroke-width: 100;
+    fill: none;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    stroke-dasharray: 0 314;
+}
+
+.pie-graph circle:nth-child(1) {
+    animation: pie1 0.5s linear 1s forwards;
+    stroke: #e7cf9f;
+}
+
+.pie-graph circle:nth-child(2) {
+    animation: pie2 0.5s linear 0.5s forwards;
+    stroke: #b7702c;
+}
+
+.pie-graph circle:nth-child(3) {
+    animation: pie3 0.5s linear forwards;
+    stroke: #8b6d4c;
+}
+
+@keyframes pie1 {
+    from { stroke-dasharray: 250 314; }
+    to { stroke-dasharray: 314 314; }
+}
+
+@keyframes pie2 {
+    from { stroke-dasharray: 157 314; }
+    to { stroke-dasharray: 250 314; }
+}
+
+@keyframes pie3 {
+    to { stroke-dasharray: 157 314; }
+}
+
+
+/* 막대 그래프 */
+
+.bar-graph rect:nth-child(1) { width: 0; height: 40px; animation: bar1 1s linear forwards; }
+.bar-graph rect:nth-child(2) { width: 0; height: 40px; animation: bar2 1s linear forwards; }
+.bar-graph rect:nth-child(3) { width: 0; height: 40px; animation: bar3 1s linear forwards; }
+
+@keyframes bar1 {
+    to { width: 280px; }
+}
+
+@keyframes bar2 {
+    to { width: 120px; }
+}
+
+@keyframes bar3 {
+    to { width: 200px; }
+}
+
+
+/* 꺾은선 그래프 */
+
+.line-graph { display: flex; }
+.line-graph circle:nth-child(1) { animation: line-circle1 1s linear forwards; }
+.line-graph circle:nth-child(2) { animation: line-circle2 1s linear forwards; }
+.line-graph circle:nth-child(3) { animation: line-circle3 1s linear forwards; }
+.line-graph circle:nth-child(4) { animation: line-circle4 1s linear forwards; }
+
+.line-graph path:nth-child(5) { animation: line-path1 1s linear forwards; }
+.line-graph path:nth-child(6) { animation: line-path2 1s linear forwards; }
+.line-graph path:nth-child(7) { animation: line-path3 1s linear forwards; }
+
+@keyframes line-circle1 {
+    to { cy: 120; }
+}
+
+@keyframes line-circle2 {
+    to { cy: 80; }
+}
+
+@keyframes line-circle3 {
+    to { cy: 120; }
+}
+
+@keyframes line-circle4 {
+    to { cy: 180; }
+}
+
+@keyframes line-path1 {
+    to { d: path("M10 120 110 80"); }
+}
+
+@keyframes line-path2 {
+    to { d: path("M110 80 210 120"); }
+}
+
+@keyframes line-path3 {
+    to { d: path("M210 120 310 180"); }
+}
+
+
+/* 후원사 영역 */
+
+#sponsor { padding: 80px 0; }
+#sponsor img { width: 170px; }
+
+
+/* 푸터 영역 */
+
+footer { background-color: #f7f5ed; }
+footer * { text-align: center; color: #252b2f; }
+footer a:hover { color: #252b2f; }
+.footer-menu { width: 50%; margin: 20px 0; }
+.footer-icon i {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 50%;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #252b2f;
+}
+
+.footer-text {
+    margin-top: 50px;
+}
+
+
+/* 모바일 */
+
+@media (max-width: 480px) {
+    body { position: relative; overflow-x: hidden; }
+    /* 헤더 영역 */
+    header { padding: 0 30px; }
+    header img { width: 100px; }
+    header>ul { display: none; }
+    .hamburger>i { display: block; font-size: 24px; cursor: pointer; }
+    #side-menu {
+        width: 200px;
+        padding: 20px;
+        position: absolute;
+        right: -200px;
+        z-index: 100;
+        background-color: #fff;
+        transition: .5s;
+        display: block;
+    }
+    #side-bar:checked ~ #side-menu { right: 0; }
+    #side-menu>li {
+        width: 120px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+    }
+    #side-menu a { transition: .5s; }
+    #side-menu a:hover { color: #bb9356; }
+    #side-off {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        z-index: 99;
+        display: none;
+    }
+    #side-bar:checked ~ #side-off { display: block; }
+    /* 비주얼 이미지 영역 */
+    #visual { height: 500px; }
+    .visual-text h3 { font-size: 18px; }
+    .pp-btns i { font-size: 22px; }
+    /* 대전 브레드투어 소개 영역 */
+    #tour-introduction { padding: 50px; flex-direction: column; }
+    .tour-img>img { width: 360px; }
+    .tour-text p { font-size: 14px; word-break: keep-all; }
+    /* 이벤트 소개 영역 */
+    #event-news { height: 900px; flex-direction: column; justify-content: space-between; align-items: center; padding: 0; }
+    #event-news img { width: 200px; }
+    /* 새소식 영역 */
+    #news { width: 420px; height: 420px; }
+    .news-item>span { max-width: 280px; }
+    /* 지도 영역 */
+    #map { height: 1400px; padding: 50px 0; background-color: #f7f5ed; }
+    #map>h3 { text-align: center; }
+    .tour-course-title-border { margin: 0 auto; }
+    #tour-course { flex-direction: column; }
+    .map-img { margin-left: 30px; width: 400px; }
+    .map-img>label { font-size: 20px; }
+    .bakery-1 { top: 119px; left: 107px; }
+    .bakery-2 { top: 151px; left: 227px; }
+    .bakery-3 { top: 222px; left: 60px; }
+    .bakery-4 { top: 233px; left: 283px; }
+    .bakery-5 { top: 283px; left: 205px; }
+    .bakery-information {
+        right: 35px;
+        width: 400px;
+        height: 740px;
+        margin-top: 50px;
+    }
+    .bakery-menu>label { width: 180px; font-size: 14px; }
+    .bakery-main-menu { font-size: 12px; }
+    .bakery-exp { font-size: 14px; }
+    /* 후원사 영역 */
+    .sponsor-images {
+        width: 250px;
+        height: 150px;
+        overflow: hidden;
+        margin: 0 auto;
+        position: relative;
+    }
+    .sponsor-images>div {
+        position: absolute;
+        animation: sponsor-slide 20s 2s infinite alternate;
+    }
+    #sponsor img { width: 250px; }
+    @keyframes sponsor-slide {
+        0% { left: 0; }
+        14% { left: -250px; }
+        28% { left: -500px; }
+        42% { left: -750px; }
+        56% { left: -1000px; }
+        70% { left: -1250px; }
+        84% { left: -1500px; }
+        100% { left: -1750px; }
+    }
+    /* 푸터 영역 */
+    footer * { font-size: 12px; }
+    .footer-menu { width: 90%; }
+}
